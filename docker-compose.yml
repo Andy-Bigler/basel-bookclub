@@ -1,0 +1,24 @@
+name: basel-bookclub
+services: 
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: "basel-bookclub-ui"
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 3000:3000
+    networks:
+      - default
+  db:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: "basel-bookclub-db"
+    ports:
+      - 8090:8090
+    volumes:
+      - ./db:/pb_data
+    networks:
+      - default
