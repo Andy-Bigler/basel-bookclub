@@ -26,4 +26,5 @@ volumes:
   pb_data:
 networks:
   caddy-network:
+    name: caddy
     external: true
