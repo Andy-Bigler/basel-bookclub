@@ -10,7 +10,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - default
+      - caddy-network
   db:
     build:
       context: ./
@@ -19,6 +19,11 @@ services:
     ports:
       - 8090:8090
     volumes:
-      - ./db:/pb_data
+      - pb_data:/pb_data
     networks:
-      - default
+      - caddy-network
+volumes:
+  pb_data:
+networks:
+  caddy-network:
+    external: true
